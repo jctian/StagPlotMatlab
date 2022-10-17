@@ -374,14 +374,14 @@ if WriteNd142
     % Age---------------
     if ASCII
         % ASCII:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="ascii">\n');
-        for i=1:length(Age)
-            fprintf(fid,'        %g \n',single(Age(i)));
+        fprintf(fid,'      <DataArray type="Float32" Name="Nd142" format="ascii">\n');
+        for i=1:length(Nd142)
+            fprintf(fid,'        %g \n',single(Nd142(i)));
         end
     else
         % BINARY:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="appended" offset="%i">\n',int32(Offset));
-        Offset = Offset + length(Age(:))*sizeof_Float32 + 1*sizeof_UInt32;
+        fprintf(fid,'      <DataArray type="Float32" Name="Nd142" format="appended" offset="%i">\n',int32(Offset));
+        Offset = Offset + length(Nd142(:))*sizeof_Float32 + 1*sizeof_UInt32;
     end
     fprintf(fid,'      </DataArray>\n');
     % -----------------------
@@ -391,14 +391,14 @@ if WriteNd144
     % Age---------------
     if ASCII
         % ASCII:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="ascii">\n');
-        for i=1:length(Age)
-            fprintf(fid,'        %g \n',single(Age(i)));
+        fprintf(fid,'      <DataArray type="Float32" Name="Nd144" format="ascii">\n');
+        for i=1:length(Nd144)
+            fprintf(fid,'        %g \n',single(Nd144(i)));
         end
     else
         % BINARY:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="appended" offset="%i">\n',int32(Offset));
-        Offset = Offset + length(Age(:))*sizeof_Float32 + 1*sizeof_UInt32;
+        fprintf(fid,'      <DataArray type="Float32" Name="Nd144" format="appended" offset="%i">\n',int32(Offset));
+        Offset = Offset + length(Nd144(:))*sizeof_Float32 + 1*sizeof_UInt32;
     end
     fprintf(fid,'      </DataArray>\n');
     % -----------------------
@@ -408,14 +408,14 @@ if WriteHf182
     % Age---------------
     if ASCII
         % ASCII:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="ascii">\n');
-        for i=1:length(Age)
-            fprintf(fid,'        %g \n',single(Age(i)));
+        fprintf(fid,'      <DataArray type="Float32" Name="Hf182" format="ascii">\n');
+        for i=1:length(Hf182)
+            fprintf(fid,'        %g \n',single(Hf182(i)));
         end
     else
         % BINARY:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="appended" offset="%i">\n',int32(Offset));
-        Offset = Offset + length(Age(:))*sizeof_Float32 + 1*sizeof_UInt32;
+        fprintf(fid,'      <DataArray type="Float32" Name="Hf182" format="appended" offset="%i">\n',int32(Offset));
+        Offset = Offset + length(Hf182(:))*sizeof_Float32 + 1*sizeof_UInt32;
     end
     fprintf(fid,'      </DataArray>\n');
     % -----------------------
@@ -425,14 +425,14 @@ if WriteW182
     % Age---------------
     if ASCII
         % ASCII:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="ascii">\n');
-        for i=1:length(Age)
-            fprintf(fid,'        %g \n',single(Age(i)));
+        fprintf(fid,'      <DataArray type="Float32" Name="W182" format="ascii">\n');
+        for i=1:length(W182)
+            fprintf(fid,'        %g \n',single(W182(i)));
         end
     else
         % BINARY:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="appended" offset="%i">\n',int32(Offset));
-        Offset = Offset + length(Age(:))*sizeof_Float32 + 1*sizeof_UInt32;
+        fprintf(fid,'      <DataArray type="Float32" Name="W182" format="appended" offset="%i">\n',int32(Offset));
+        Offset = Offset + length(W182(:))*sizeof_Float32 + 1*sizeof_UInt32;
     end
     fprintf(fid,'      </DataArray>\n');
     % -----------------------
@@ -442,14 +442,14 @@ if WriteW184
     % Age---------------
     if ASCII
         % ASCII:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="ascii">\n');
-        for i=1:length(Age)
-            fprintf(fid,'        %g \n',single(Age(i)));
+        fprintf(fid,'      <DataArray type="Float32" Name="W184" format="ascii">\n');
+        for i=1:length(W184)
+            fprintf(fid,'        %g \n',single(W184(i)));
         end
     else
         % BINARY:
-        fprintf(fid,'      <DataArray type="Float32" Name="Age" format="appended" offset="%i">\n',int32(Offset));
-        Offset = Offset + length(Age(:))*sizeof_Float32 + 1*sizeof_UInt32;
+        fprintf(fid,'      <DataArray type="Float32" Name="W184" format="appended" offset="%i">\n',int32(Offset));
+        Offset = Offset + length(W184(:))*sizeof_Float32 + 1*sizeof_UInt32;
     end
     fprintf(fid,'      </DataArray>\n');
     % -----------------------
@@ -599,6 +599,44 @@ if ~ASCII
         % Add MeltComposition in binary format
         fwrite(fid,uint32(length(MeltComposition)*sizeof_Float32),'uint32');
         fwrite(fid,single(MeltComposition).'      ,   'float32');
+    end
+
+    if WriteAge
+        % Add Age in binary format
+        fwrite(fid,uint32(length(Age)*sizeof_Float32),'uint32');
+        fwrite(fid,single(Age).'      ,   'float32');
+    end
+
+    if WriteNd142
+        % Add Nd142 in binary format
+        fwrite(fid,uint32(length(Nd142)*sizeof_Float32),'uint32');
+        fwrite(fid,single(Nd142).'      ,   'float32');
+    end
+    if WriteNd144
+        % Add Nd144 in binary format
+        fwrite(fid,uint32(length(Nd144)*sizeof_Float32),'uint32');
+        fwrite(fid,single(Nd144).'      ,   'float32');
+    end
+    if WriteSm142
+        % Add Sm142 in binary format
+        fwrite(fid,uint32(length(Sm142)*sizeof_Float32),'uint32');
+        fwrite(fid,single(Sm142).'      ,   'float32');
+    end
+
+    if WriteHf182
+        % Add Age in binary format
+        fwrite(fid,uint32(length(Hf182)*sizeof_Float32),'uint32');
+        fwrite(fid,single(Hf182).'      ,   'float32');
+    end
+    if WriteW182
+        % Add W182 in binary format
+        fwrite(fid,uint32(length(W182)*sizeof_Float32),'uint32');
+        fwrite(fid,single(W182).'      ,   'float32');
+    end
+    if WriteW184
+        % Add W184 in binary format
+        fwrite(fid,uint32(length(W184)*sizeof_Float32),'uint32');
+        fwrite(fid,single(W184).'      ,   'float32');
     end
 
     if WriteVelocity
